@@ -48,7 +48,7 @@
                     <%
                         List<Socios> resultado = null;
                         SociosDAO soc1 = new SociosDAO();
-                        resultado = soc1.listarSocios();
+                        resultado = soc1.ListarSocios();
 
                         for (int i = 0; i < resultado.size() ; i++) 
                         {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Socios;
 import modelo.SociosDAO;
 
+
 public class SociosController extends HttpServlet {
     
     public SociosController()
@@ -23,8 +24,16 @@ public class SociosController extends HttpServlet {
     {        
         SociosDAO sociosDAO = null;
         
-        sociosDAO = new SociosDAO();
-        
+            try 
+	    {
+	    sociosDAO = new SociosDAO();
+	    } 
+	    catch (ClassNotFoundException e) 
+            {	
+	    e.printStackTrace();
+	    }
+      
+          
         String accion;
         // dispacher, es una interaz que ayuda al intercambio de informacion entre el servlet y el html
         RequestDispatcher dispatcher = null; 
@@ -35,54 +44,54 @@ public class SociosController extends HttpServlet {
         { 
             dispatcher = request.getRequestDispatcher("vistas/socios.jsp");
         }
-        else if (accion.equals("modificar"))
-        {
-            dispatcher = request.getRequestDispatcher("vistas/modificar.jsp");
-        }
-        else if (accion.equals("actualizar"))
-        {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String direccion = request.getParameter("direccion");
-            String localidad = request.getParameter("localidad");
-            LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
-            String eamil = request.getParameter("email");
-            String telefono = request.getParameter("telefono");
+            else if (accion.equals("modificar"))
+            {
+                dispatcher = request.getRequestDispatcher("vistas/modificar.jsp");
+            }
+            else if (accion.equals("actualizar"))
+            {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                String direccion = request.getParameter("direccion");
+                String localidad = request.getParameter("localidad");
+                LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
+                String eamil = request.getParameter("email");
+                String telefono = request.getParameter("telefono");
             
-            Socios soc = new Socios(id, nombre, apellido, direccion, localidad, fechaNac, eamil, telefono, true);
-            sociosDAO.ActualizarSocios(soc);
-            dispatcher = request.getRequestDispatcher("visitas/socios.jsp");
-        }
-        else if (accion.equals("eliminar"))
-        {
-            int id = Integer.parseInt(request.getParameter("id"));
-            sociosDAO.EliminarSocios(id);
-            dispatcher = request.getRequestDispatcher("vistas/socios.jsp");           
-        }
-        else if (accion.equals("nuevo"))
-        {
-            dispatcher = request.getRequestDispatcher("vistas/nuevo.jsp");
-        }
-        else if (accion.equals("insert"))
-        {
-            String nombre = request.getParameter("nombre");
-            String apellido = request.getParameter("apellido");
-            String direccion = request.getParameter("direccon");
-            String localidad = request.getParameter("localidad");
-            LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
-            String email = request.getParameter("email");
-            String telefono = request.getParameter("telefono");
+                Socios soc = new Socios(id, nombre, apellido, direccion, localidad, fechaNac, eamil, telefono, true);
+                sociosDAO.ActualizarSocios(soc);
+                dispatcher = request.getRequestDispatcher("visitas/socios.jsp");
+            }
+            else if (accion.equals("eliminar"))
+            {
+                int id = Integer.parseInt(request.getParameter("id"));
+                sociosDAO.EliminarSocios(id);
+                dispatcher = request.getRequestDispatcher("vistas/socios.jsp");           
+            }
+            else if (accion.equals("nuevo"))
+            {
+                dispatcher = request.getRequestDispatcher("vistas/nuevo.jsp");
+            }
+            else if (accion.equals("insert"))
+            {
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                String direccion = request.getParameter("direccon");
+                String localidad = request.getParameter("localidad");
+                LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
+                String email = request.getParameter("email");
+                String telefono = request.getParameter("telefono");
             
-            Socios soc = new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
-            //el 0 es un numero aleatorio que le damos ya que al id no se lo insertamos nosotros, eso solo paera rellenar
-            sociosDAO.InsertarSocios(soc);
-            dispatcher = request.getRequestDispatcher("vista/socios.jsp");
-            //me recarga la vistasi la insercion se hizo bien, igual pasa con los dispatcher anteriores
-        }            
+                Socios soc = new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                //el 0 es un numero aleatorio que le damos ya que al id no se lo insertamos nosotros, eso solo paera rellenar
+                sociosDAO.InsertarSocios(soc);
+                dispatcher = request.getRequestDispatcher("vista/socios.jsp");
+                //me recarga la vistasi la insercion se hizo bien, igual pasa con los dispatcher anteriores
+            }            
          
-        dispatcher.forward(request, response); 
-        //a cada requerimiento que me haga la url le paso una respuesta
+            dispatcher.forward(request, response); 
+            //a cada requerimiento que me haga la url le paso una respuesta
     }
 
     @Override

@@ -13,13 +13,15 @@ public class SociosDAO {
 
     Connection conexion;
 
-    public SociosDAO() {
+    public SociosDAO() throws ClassNotFoundException
+    {
         Conexion conect = new Conexion();
         conexion = conect.getConnection();
 
     }//----------------------------- ENLISTADO DE LOS SOCIO ---------------------------------//
 
-    public List<Socios> ListarSocios() {
+    public List<Socios> ListarSocios() 
+    {
         
         // siempre poner el mismo nombre
         PreparedStatement prepSt;
@@ -44,15 +46,13 @@ public class SociosDAO {
                 String email = resultS.getString("email");
                 boolean activo = resultS.getBoolean("activo");
 
-                Socios soc = new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                Socios soc = new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, activo);
                 lista.add(soc);
             }
 
-
-
         } catch (SQLException e) {
 
-            System.out.println("e");
+            System.out.println(e);
         }
 
         return lista;
@@ -67,7 +67,7 @@ public class SociosDAO {
 
         // siempre que querramos invocar un comando que ejecute una accion sobre una base de datos, necesitamos un try cach
         try {
-            prepSt = conexion.prepareStatement("select *from socios where id=?"); //el preparedSt(consulta precompilada), nos permite que al momento de la ejecucion se reemplase el signo de pregunta por un dato (que le tenemos que sumistrar)
+            prepSt = conexion.prepareStatement("select *from socios where idSocio=?"); //el preparedSt(consulta precompilada), nos permite que al momento de la ejecucion se reemplase el signo de pregunta por un dato (que le tenemos que sumistrar)
             prepSt.setInt(1, _id); // necesita dos parametros, la ubicacion y el dato en si (el argumento que trae el metodo y eso es lo que va a reemplazar en el signo de pregunta anterior)
             resultS = prepSt.executeQuery(); // aca ponemos la variable que almacena todo lo de la consulta anterior
 
@@ -88,7 +88,7 @@ public class SociosDAO {
 
         } catch (SQLException e) {
 
-            System.out.println("e");
+            System.out.println(e);
             return null;
         }
 
@@ -114,9 +114,10 @@ public class SociosDAO {
 
             return true;
 
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) {
 
-            System.out.println("e");
+            System.out.println(e);
             return false;
         }
 
@@ -127,7 +128,8 @@ public class SociosDAO {
 
         PreparedStatement prepSt;
 
-        try {
+        try 
+        {
             prepSt = conexion.prepareStatement("update socios set nombre=?, apellido=?, direccion=?, localidad=?, fechaNac=?, email=?, telefono=?, activo=?");
             prepSt.setString(1, soc1.getNombre());
             prepSt.setString(2, soc1.getApellido());
@@ -142,9 +144,11 @@ public class SociosDAO {
 
             return true;
 
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
 
-            System.out.println("e");
+            System.out.println(e);
             
             return false;
         }
@@ -156,17 +160,18 @@ public class SociosDAO {
         
         PreparedStatement prepSt;
 
-        try {
-            
+        try 
+        {            
             prepSt = conexion.prepareStatement("delect *from socios where idSocio=?");
             prepSt.setInt(1, _id);
             prepSt.execute();            
 
             return true;
 
-        } catch (SQLException e) {
-
-            System.out.println("e");
+        } 
+        catch (SQLException e) 
+        {
+            System.out.println(e);
             
             return false;
         }
