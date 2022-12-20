@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,11 +27,11 @@ public class SociosController extends HttpServlet {
         
             try 
 	    {
-	    sociosDAO = new SociosDAO();
+                sociosDAO = new SociosDAO();
 	    } 
 	    catch (ClassNotFoundException e) 
             {	
-	    e.printStackTrace();
+                e.printStackTrace();
 	    }
       
           
@@ -50,7 +51,7 @@ public class SociosController extends HttpServlet {
             }
             else if (accion.equals("actualizar"))
             {
-                int id = Integer.parseInt(request.getParameter("id"));
+                int id = Integer.parseInt(request.getParameter("idSocio"));
                 String nombre = request.getParameter("nombre");
                 String apellido = request.getParameter("apellido");
                 String direccion = request.getParameter("direccion");
@@ -65,7 +66,7 @@ public class SociosController extends HttpServlet {
             }
             else if (accion.equals("eliminar"))
             {
-                int id = Integer.parseInt(request.getParameter("id"));
+                int id = Integer.parseInt(request.getParameter("idSocio"));
                 sociosDAO.EliminarSocios(id);
                 dispatcher = request.getRequestDispatcher("vistas/socios.jsp");           
             }
@@ -86,7 +87,7 @@ public class SociosController extends HttpServlet {
                 Socios soc = new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
                 //el 0 es un numero aleatorio que le damos ya que al id no se lo insertamos nosotros, eso solo paera rellenar
                 sociosDAO.InsertarSocios(soc);
-                dispatcher = request.getRequestDispatcher("vista/socios.jsp");
+                dispatcher = request.getRequestDispatcher("vistas/socios.jsp");
                 //me recarga la vistasi la insercion se hizo bien, igual pasa con los dispatcher anteriores
             }            
          

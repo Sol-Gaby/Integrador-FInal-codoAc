@@ -38,7 +38,7 @@
                             mod = Integer.parseInt(id);
                             Socios resultado = null;
                             SociosDAO soc1 = new SociosDAO();
-                            resultado = soc1.mostrarSocio(mod);
+                            resultado = soc1.MostrarSocio(mod);
 
                         %>
 

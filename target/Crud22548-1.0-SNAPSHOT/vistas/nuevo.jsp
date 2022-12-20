@@ -51,19 +51,20 @@
                             <input type="text" class="form-control" name="localidad" id="localidad" required placeholder="Ingrese una localidad">                        
                         </div>
                     </div>
+                    <!-- ---------------------- FILA 3 ---------------------- -->
 
                     <div class="row g-3">
                         <!-- label para fecha de nacimiento -->
                         <div class="col mb-3">
-                            <label for="fechaNac" class="form-label fw-bold">Fecha de Nacimiento</label>
-                            <input type="text" class="form-control" name="fechaNac" id="fechaNac" required placeholder="Ingrese una fecha de nacimiento">                        
-                        </div><!-- label email -->
+                            <label for="fechaNac" class="form-label fw-bold" >Fecha Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNac" name="fechaNac"">                          
+                        </div> 
+
                         <div class="col mb-3">
                             <label for="email" class="form-label fw-bold">Email</label>
-                            <input type="text" class="form-control" name="email" id="email" required placeholder="Ingrese una direccion de correo">                        
+                            <input type="text" class="form-control" name="email" id="email" required placeholder="Ingrese una direccion de correo valida">                        
                         </div>
                     </div>
-
 
 
                     <div class="row g-3">
@@ -80,6 +81,14 @@
                                 <option>activo</option>
                                 <option>baja</option>
                             </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col mb-6 pt-5">
+                            <button type="submit" class="btn btn-warning" >Cargar Socio</button>
+                        </div>
+
                     </div>
 
 

@@ -32,7 +32,7 @@ public class SociosDAO {
 
         // siempre que querramos invocar un comando que ejecute una accion sobre una base de datos, necesitamos un try cach
         try {
-            prepSt = conexion.prepareStatement("select *from socios");
+            prepSt = conexion.prepareStatement("select * from socios");
             resultS = prepSt.executeQuery(); // aca ponemos la variable que almacena todo lo de la consulta anterior
 
             while (resultS.next()) {
@@ -71,7 +71,8 @@ public class SociosDAO {
             prepSt.setInt(1, _id); // necesita dos parametros, la ubicacion y el dato en si (el argumento que trae el metodo y eso es lo que va a reemplazar en el signo de pregunta anterior)
             resultS = prepSt.executeQuery(); // aca ponemos la variable que almacena todo lo de la consulta anterior
 
-            while (resultS.next()) {
+            while (resultS.next()) 
+            {
                 int id = resultS.getInt("idSocio");
                 String nombre = resultS.getString("nombre");
                 String apellido = resultS.getString("apellido");

@@ -19,7 +19,8 @@ public class Socios
     
     //constructoresd de la clase socio, nos permite manipular los atributos que les dimos
 
-    public Socios(int idSocio, String nombre, String apellido, String direccion, String localidad, LocalDate fechaNac, String email, String telefono, boolean activo) {
+    public Socios(int idSocio, String nombre, String apellido, String direccion, String localidad, LocalDate fechaNac, String email, String telefono, boolean activo) 
+    {
         this.idSocio = idSocio;
         this.nombre = nombre;
         this.apellido = apellido;
