@@ -105,9 +105,7 @@ public class Socios
     public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
-    
-     
-        
+      
 }
 /**
  *

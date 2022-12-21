@@ -25,12 +25,12 @@
     
     <body>
         
-        <h1>Listado de Socios Gym</h1>
+        <h1 class="text-center py-5 bg-info">Listado de Socios Gym</h1>
 
-        <div class="container">
-            <div class="row">
+        <div class="container container text-center">
+            <div class="row px-4">
                 
-                <a class="btn btn-primary col-4 m-5" href="SociosController?accion=nuevo"> Agregar Socio Nuevo</a>
+                <a class="btn btn-warning col-4 my-5" href="SociosController?accion=nuevo"> Agregar Socio Nuevo</a>
                 
                 <table class="table table-primary">
                     <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
@@ -51,10 +51,10 @@
 
                     <%
                         List<Socios> resultado=null;
-                        SociosDAO soc1=new SociosDAO();
-                        resultado=soc1.ListarSocios();
+                        SociosDAO soc=new SociosDAO();
+                        resultado=soc.ListarSocios();
 
-                            for (int i=0; i<resultado.size(); i++) 
+                            for (int i=0;i<resultado.size();i++) 
                             {
                                 String rutaMod = "SociosController?accion=modificar&id=" + resultado.get(i).getIdSocio();
                                 String rutaElim = "SociosController?accion=eliminar&id=" + resultado.get(i).getIdSocio();
@@ -70,6 +70,7 @@
                         <td><%=resultado.get(i).getApellido()%></td>
                         <td><%=resultado.get(i).getLocalidad()%></td>
                         <td><%=resultado.get(i).getDireccion()%></td>
+                        <td><%=resultado.get(i).getFechaNac()%></td>
                         <td><%=resultado.get(i).getEmail()%></td>
                         <td><%=resultado.get(i).getTelefono()%></td>
                         <td class="text-center"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a> </td>

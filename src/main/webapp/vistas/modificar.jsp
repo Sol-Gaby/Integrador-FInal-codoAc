@@ -6,6 +6,7 @@
 
 <%@page import="modelo.SociosDAO"%>
 <%@page import="modelo.Socios"%>
+<%@page import="java.util.List"%>  
 <%@page contentType="text/html" pageEncoding="UTF-8"%> //todo lo que este dentro de estos corchangulos es codigo javascrip
 <% %>
 <!DOCTYPE html>
@@ -27,27 +28,29 @@
 
         <div class="container text-center bg-info">           
             <div class="row px-4">
+                
+                        <%
+                                String id=request.getParameter("id"); //aca obtenemos el id del socio
+                                int mid; 
+                                mid=Integer.parseInt(id);
+                                Socios resultado=null;
+                                SociosDAO socio=new SociosDAO();
+                                resultado=socio.MostrarSocio(mid);
+
+                        %>
+                        
+                        //mid, eata variable almacena un objeto de tipo socio y es con la que invocamos el metod de modificar
 
                 <form class="p-3" method="POST" action="SociosController?accion=actualizar">
 
                     <div class="row g-3">
-
-                        <%
-                            String id = request.getParameter("id"); //aca obtenemos el id del socio
-                            int mod; // este mod o mid como tiene el profe, no explica para qe es. Osea eata variable almacena un objeto de tipo socio y es con la que invocamos el metod de modificar
-                            mod = Integer.parseInt(id);
-                            Socios resultado = null;
-                            SociosDAO soc1 = new SociosDAO();
-                            resultado = soc1.MostrarSocio(mod);
-
-                        %>
 
                         <!-- ---------------------- FILA 1 ---------------------- -->
 
                         <!-- label para id -->                        
                         <div class="col mb-3">
                             <label for="id" class="form-label fw-bold">Id</label>
-                            <input type="text" class="form-control" name="id" id="id" redonly="true" value="<%=resultado.getIdSocio()%>">                        
+                            <input type="text" class="form-control" name="id" id="id" redonly="true" value="<%=resultado.getIdSocio() %>">                        
                         </div>                        
                         <!-- label para nombre -->                        
                         <div class="col mb-3">
