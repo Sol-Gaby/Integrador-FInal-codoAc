@@ -39,7 +39,7 @@
 
                         %>
                         
-                        //mid, eata variable almacena un objeto de tipo socio y es con la que invocamos el metod de modificar
+<!--                        mid, eata variable almacena un objeto de tipo socio y es con la que invocamos el metod de modificar -->
 
                 <form class="p-3" method="POST" action="SociosController?accion=actualizar">
 
