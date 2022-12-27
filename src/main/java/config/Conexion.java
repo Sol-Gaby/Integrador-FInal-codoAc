@@ -15,14 +15,14 @@ public class Conexion
     
     public Connection getConnection()
     {
-        Connection conexion = null;
+        Connection conexion=null;
         
         try 
         {
             Class.forName(driver);
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/crud22548", "root", "");
+            conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/crud22548","root","");
         } 
-        catch (ClassNotFoundException | SQLException e) 
+        catch (ClassNotFoundException|SQLException e) 
         {
             System.out.println(e);
         } 
@@ -32,25 +32,25 @@ public class Conexion
     public static void main(String[] args) throws SQLException 
     {
         
-        Connection conexion = null; // variable del tipo connectin
-        Conexion conect = new Conexion(); //objeto que pertenece a la clase desarrollada arriba
-        conexion = conect.getConnection(); //
+        Connection conexion=null; // variable del tipo connectin
+        Conexion conect=new Conexion(); //objeto que pertenece a la clase desarrollada arriba
+        conexion=conect.getConnection(); //
         
         //un preparedstatment es una consulta sql pre-compilada, permite precompilar la consulta asi me mantiene asi y las consultas se vuelven mas rapidas
         // resultsert es un tipo de dato que guarda bloques de informacion provenientes de la consulta sql, como registros.
         PreparedStatement prepSt;
         ResultSet resultSet;
         
-        prepSt = conexion.prepareStatement("select * from socios");
+        prepSt=conexion.prepareStatement("select * from socios");
         
-        resultSet = prepSt.executeQuery();
+        resultSet=prepSt.executeQuery();
         
         while (resultSet.next()) 
         {
-            int id = resultSet.getInt("idSocio");
-            boolean estado = resultSet.getBoolean("activo");
+            int id=resultSet.getInt("idSocio");
+            boolean estado=resultSet.getBoolean("activo");
             
-            System.out.println("ID: " + id + ", Estado: " + estado+"." );
+            System.out.println("ID: "+id+", Estado: "+estado+".");
         }
                 
     }

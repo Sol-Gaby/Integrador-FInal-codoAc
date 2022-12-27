@@ -20,7 +20,7 @@
     </head>
     <body>
 
-        <h1 class="text-center p-4"> Nuevo Socio </h1>
+        <h1 class="text-center p-4">Nuevo Socio</h1>
 
         <div class="container text-center">           
             <div class="row pd-4">

@@ -7,13 +7,14 @@
 <%@page import="modelo.SociosDAO"%>
 <%@page import="modelo.Socios"%>
 <%@page import="java.util.List"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>Socios</title>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS only copiado desde bootstrap-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -22,67 +23,80 @@
         <!-- script para fontawersome -->
         <script src="https://kit.fontawesome.com/d3abc30a8e.js" crossorigin="anonymous"></script>
     </head>
-    
+
     <body>
         
-        <h1 class="text-center py-5 bg-info">Listado de Socios Gym</h1>
+        <h1 class="text-center py-4 bg-info">Listado de Socios Gym</h1>
+        <div class="container text-center">
 
-        <div class="container container text-center">
             <div class="row px-4">
-                
-                <a class="btn btn-warning col-4 my-5" href="SociosController?accion=nuevo"> Agregar Socio Nuevo</a>
-                
-                <table class="table table-primary">
-                    <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
-                    <thead>                        
-                        <th>Id</th> <!-- encabezado de ID SOCIO -->
-                        <th>Nombre</th> <!-- encabezado de NOMBRE SOCIO -->
-                        <th>Apellido</th> <!-- encabezado de APELLIDO SOCIO -->
-                        <th>Direccion</th> <!-- encabezado de DIRECCION SOCIO -->
-                        <th>Localidad</th> <!-- encabezado de LOCALIDAD SOCIO -->
-                        <th>Email</th> <!-- encabezado de EMAIL SOCIO -->
-                        <th>Telefono</th> <!-- encabezado de TELEFONO SOCIO -->
-                        <th>Eliminar</th> <!-- encabezado de BOTON ELIMINAR SOCIO -->
-                        <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->        
-                    </thead>
 
-                    <!-- --------- COMIENZO CODIGO DE JAVASCRIP ---------  -->
-                    <!-- en la variable resultado guardo toda la info de la lista de socios -->
+                <a class="btn btn-warning col-4 my-5 rounded-4" href="SociosController?accion=nuevo">Agregar Socio Nuevo</a>
 
-                    <%
-                        List<Socios> resultado=null;
-                        SociosDAO soc=new SociosDAO();
-                        resultado=soc.ListarSocios();
+                <div class="table-responsive mt-2">
+                    <table class="table table-primary table-hover">
+                        <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
+                        <thead>
+                            <!--                            <tr>-->
+                            <th>Id</th> <!-- encabezado de ID SOCIO -->
+                            <th>Nombre</th> <!-- encabezado de NOMBRE SOCIO -->
+                            <th>Apellido</th> <!-- encabezado de APELLIDO SOCIO -->
+                            <th>Direccion</th> <!-- encabezado de DIRECCION SOCIO -->
+                            <th>Localidad</th> <!-- encabezado de LOCALIDAD SOCIO -->
+                            <th>Email</th> <!-- encabezado de EMAIL SOCIO -->
+                            <th>Telefono</th> <!-- encabezado de TELEFONO SOCIO -->
+                            <th>Eliminar</th> <!-- encabezado de BOTON ELIMINAR SOCIO -->
+                            <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->        
+                        <!--                            </tr>-->
+                        </thead>
 
-                            for (int i=0;i<resultado.size();i++) 
+                        <!-- --------- COMIENZO CODIGO DE JAVASCRIP ---------  -->
+                        <!-- en la variable resultado guardo toda la info de la lista de socios -->
+
+                        <%
+                            List<Socios> resultado = null;
+                            SociosDAO soc = new SociosDAO();
+                            resultado = soc.listaSocios();
+
+                            for (int i=0;i<resultado.size();i++)
                             {
-                                String rutaMod = "SociosController?accion=modificar&id=" + resultado.get(i).getIdSocio();
-                                String rutaElim = "SociosController?accion=eliminar&id=" + resultado.get(i).getIdSocio();
-                    %> 
 
-                    <!-- --------- FINAL DE CODIGO JAVASCRIP ---------  -->
+                                String rutaMod="SociosController?accion=modificar&id="+resultado.get(i).getIdSocio();
+                                String rutaElim="SociosController?accion=eliminar&id="+resultado.get(i).getIdSocio();
+                        %> 
 
-                    <!-- --------- relleno DE LA TABLA ---------  -->
-                    <tr>
-                        <!-- persona de prueba hasta conectar con la base de datos que traiga a los socios -->
-                        <td><%=resultado.get(i).getIdSocio()%></td>
-                        <td><%=resultado.get(i).getNombre()%></td>
-                        <td><%=resultado.get(i).getApellido()%></td>
-                        <td><%=resultado.get(i).getLocalidad()%></td>
-                        <td><%=resultado.get(i).getDireccion()%></td>
-                        <td><%=resultado.get(i).getFechaNac()%></td>
-                        <td><%=resultado.get(i).getEmail()%></td>
-                        <td><%=resultado.get(i).getTelefono()%></td>
-                        <td class="text-center"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a> </td>
-                        <td class="text-center"> <a href=<%=rutaElim%>><i class="fa-solid fa-pen"></i></a> </td>                 
-                    </tr>
+                        <!-- --------- FINAL DE CODIGO JAVASCRIP ---------  -->
 
-                    <% 
+                        <!-- --------- relleno DE LA TABLA ---------  -->
+                        <tr>
+                            <!-- persona de prueba hasta conectar con la base de datos que traiga a los socios -->
+                            <td><%=resultado.get(i).getIdSocio()%></td>
+                            <td><%=resultado.get(i).getNombre()%></td>
+                            <td><%=resultado.get(i).getApellido()%></td>
+                            <td><%=resultado.get(i).getLocalidad()%></td>
+                            <td><%=resultado.get(i).getDireccion()%></td>
+                            <td><%=resultado.get(i).getFechaNac()%></td>
+                            <td><%=resultado.get(i).getEmail()%></td>
+                            <td><%=resultado.get(i).getTelefono()%></td>
+
+                            <!-- BOTONES -->
+
+                            <td class="text-center">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" class="btn- btn-warning"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a></button>
+                                    <button type="button" class="btn- btn-warning"><a href=<%=rutaElim%>><i class="fa-solid fa-pen"></i></a></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <%
                             }
-                    %>
+                        %>
 
-                </table>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
+    
 </html>

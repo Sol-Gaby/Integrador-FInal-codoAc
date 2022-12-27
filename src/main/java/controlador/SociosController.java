@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Socios;
 import modelo.SociosDAO;
 
+@WebServlet (name = "SociosController",urlPatterns = {"/SociosController"})
 
-public class SociosController extends HttpServlet {
+public class SociosController extends HttpServlet 
+{
     
     public SociosController()
     {
@@ -23,71 +25,71 @@ public class SociosController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {        
-        SociosDAO sociosDAO = null;
+       SociosDAO sociosDAO=null;
         
-            try 
-	    {
-                sociosDAO = new SociosDAO();
-	    } 
-	    catch (ClassNotFoundException e) 
-            {	
+            try
+            {
+            sociosDAO=new SociosDAO();
+            }
+            catch (ClassNotFoundException e)
+            {
                 e.printStackTrace();
-	    }
-      
+            }      
           
         String accion;
         // dispacher, es una interaz que ayuda al intercambio de informacion entre el servlet y el html
-        RequestDispatcher dispatcher = null; 
+        RequestDispatcher dispatcher=null; 
         //"accion" es una variable la cual pasa por la url para capturar/almacenar las acciones que vamos a hacer (modificar, nuevo, insertar, etc)
-        accion = request.getParameter("accion");
+        accion=request.getParameter("accion");
         // el if va a capturar dos posibles casos que se nos van a presentar              
-        if (accion == null || accion.isEmpty())
+        if (accion==null||accion.isEmpty())
         { 
-            dispatcher = request.getRequestDispatcher("vistas/socios.jsp");
+            dispatcher=request.getRequestDispatcher("vistas/socios.jsp");
         }
             else if (accion.equals("modificar"))
             {
-                dispatcher = request.getRequestDispatcher("vistas/modificar.jsp");
+                dispatcher=request.getRequestDispatcher("vistas/modificar.jsp");
             }
             else if (accion.equals("actualizar"))
             {
-                int id = Integer.parseInt(request.getParameter("idSocio"));
-                String nombre = request.getParameter("nombre");
-                String apellido = request.getParameter("apellido");
-                String direccion = request.getParameter("direccion");
-                String localidad = request.getParameter("localidad");
-                LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
-                String eamil = request.getParameter("email");
-                String telefono = request.getParameter("telefono");
+                int id=Integer.parseInt(request.getParameter("id"));
+                String nombre=request.getParameter("nombre");
+                String apellido=request.getParameter("apellido");
+                String direccion=request.getParameter("direccion");
+                String localidad=request.getParameter("localidad");
+                LocalDate fechaNac=LocalDate.parse(request.getParameter("fechaNac"));
+                String email=request.getParameter("email");
+                String telefono=request.getParameter("telefono");
+//                boolean active=Boolean.parseBoolean(request.getParameter("activo"));
             
-                Socios soc = new Socios(id, nombre, apellido, direccion, localidad, fechaNac, eamil, telefono, true);
-                sociosDAO.ActualizarSocios(soc);
-                dispatcher = request.getRequestDispatcher("visitas/socios.jsp");
+                Socios soc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                sociosDAO.actualizarSocios(soc);
+                dispatcher=request.getRequestDispatcher("vistas/socios.jsp");
             }
             else if (accion.equals("eliminar"))
             {
-                int id = Integer.parseInt(request.getParameter("idSocio"));
-                sociosDAO.EliminarSocios(id);
-                dispatcher = request.getRequestDispatcher("vistas/socios.jsp");           
+                int id=Integer.parseInt(request.getParameter("id"));
+                sociosDAO.eliminarSocios(id);
+                dispatcher=request.getRequestDispatcher("vistas/socios.jsp");           
             }
             else if (accion.equals("nuevo"))
             {
-                dispatcher = request.getRequestDispatcher("vistas/nuevo.jsp");
+                dispatcher=request.getRequestDispatcher("vistas/nuevo.jsp");
             }
             else if (accion.equals("insert"))
             {
-                String nombre = request.getParameter("nombre");
-                String apellido = request.getParameter("apellido");
-                String direccion = request.getParameter("direccon");
-                String localidad = request.getParameter("localidad");
-                LocalDate fechaNac = LocalDate.parse(request.getParameter("fechaNac"));
-                String email = request.getParameter("email");
-                String telefono = request.getParameter("telefono");
+                String nombre=request.getParameter("nombre");
+                String apellido=request.getParameter("apellido");
+                String direccion=request.getParameter("direccon");
+                String localidad=request.getParameter("localidad");
+                LocalDate fechaNac=LocalDate.parse(request.getParameter("fechaNac"));
+                String email=request.getParameter("email");
+                String telefono=request.getParameter("telefono");
             
-                Socios soc = new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                Socios soc=new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
                 //el 0 es un numero aleatorio que le damos ya que al id no se lo insertamos nosotros, eso solo paera rellenar
-                sociosDAO.InsertarSocios(soc);
-                dispatcher = request.getRequestDispatcher("vistas/socios.jsp");
+                sociosDAO.insertSocios(soc);
+                dispatcher=request.getRequestDispatcher("vistas/socios.jsp");
                 //me recarga la vistasi la insercion se hizo bien, igual pasa con los dispatcher anteriores
             }            
          

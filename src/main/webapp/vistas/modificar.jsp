@@ -7,8 +7,9 @@
 <%@page import="modelo.SociosDAO"%>
 <%@page import="modelo.Socios"%>
 <%@page import="java.util.List"%>  
-<%@page contentType="text/html" pageEncoding="UTF-8"%> //todo lo que este dentro de estos corchangulos es codigo javascrip
-<% %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!--//todo lo que este dentro de estos corchangulos es codigo javascrip-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,18 +25,18 @@
     </head>
     <body>
 
-        <h1 class="text-center py-5"> Modificar Socio </h1>
+        <h1 class="text-center py-5">Modificar Socio</h1>
 
         <div class="container text-center bg-info">           
             <div class="row px-4">
-                
+<!--                //aca obtenemos el id del socio-->
                         <%
-                                String id=request.getParameter("id"); //aca obtenemos el id del socio
+                                String id=request.getParameter("id");
                                 int mid; 
                                 mid=Integer.parseInt(id);
                                 Socios resultado=null;
                                 SociosDAO socio=new SociosDAO();
-                                resultado=socio.MostrarSocio(mid);
+                                resultado=socio.mostrarSocio(mid);
 
                         %>
                         
