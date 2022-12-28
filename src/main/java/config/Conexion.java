@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class Conexion 
 {
     
-    public String driver = "com.mysql.jdbc.Driver";
+    public String driver="com.mysql.jdbc.Driver";
     
     public Connection getConnection()
     {
@@ -19,7 +19,7 @@ public class Conexion
         
         try 
         {
-            Class.forName(driver);
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/crud22548","root","");
         } 
         catch (ClassNotFoundException|SQLException e) 
@@ -33,22 +33,22 @@ public class Conexion
     {
         
         Connection conexion=null; // variable del tipo connectin
-        Conexion conect=new Conexion(); //objeto que pertenece a la clase desarrollada arriba
-        conexion=conect.getConnection(); //
+        Conexion con=new Conexion(); //objeto que pertenece a la clase desarrollada arriba
+        conexion=con.getConnection(); //
         
         //un preparedstatment es una consulta sql pre-compilada, permite precompilar la consulta asi me mantiene asi y las consultas se vuelven mas rapidas
         // resultsert es un tipo de dato que guarda bloques de informacion provenientes de la consulta sql, como registros.
         PreparedStatement prepSt;
-        ResultSet resultSet;
+        ResultSet resSet;
         
         prepSt=conexion.prepareStatement("select * from socios");
         
-        resultSet=prepSt.executeQuery();
+        resSet=prepSt.executeQuery();
         
-        while (resultSet.next()) 
+        while (resSet.next()) 
         {
-            int id=resultSet.getInt("idSocio");
-            boolean estado=resultSet.getBoolean("activo");
+            int id=resSet.getInt("idSocio");
+            boolean estado=resSet.getBoolean("activo");
             
             System.out.println("ID: "+id+", Estado: "+estado+".");
         }

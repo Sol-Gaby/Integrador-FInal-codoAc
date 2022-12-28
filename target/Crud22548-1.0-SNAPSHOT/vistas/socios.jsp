@@ -34,7 +34,7 @@
                 <a class="btn btn-warning col-4 my-5 rounded-4" href="SociosController?accion=nuevo">Agregar Socio Nuevo</a>
 
                 <div class="table-responsive mt-2">
-                    <table class="table table-primary table-hover">
+                    <table class="table table-primary">
                         <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
                         <thead>
                             <!--                            <tr>-->
@@ -78,15 +78,9 @@
                             <td><%=resultado.get(i).getFechaNac()%></td>
                             <td><%=resultado.get(i).getEmail()%></td>
                             <td><%=resultado.get(i).getTelefono()%></td>
-
                             <!-- BOTONES -->
-
-                            <td class="text-center">
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" class="btn- btn-warning"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a></button>
-                                    <button type="button" class="btn- btn-warning"><a href=<%=rutaElim%>><i class="fa-solid fa-pen"></i></a></button>
-                                </div>
-                            </td>
+                            <td class="text-center"><button type="button" class="btn- btn-warning"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a></button></td>
+                            <td class="text-center"><button type="button" class="btn- btn-warning"><a href=<%=rutaElim%>><i class="fa-solid fa-pen"></i></a></button></td>
                         </tr>
 
                         <%
