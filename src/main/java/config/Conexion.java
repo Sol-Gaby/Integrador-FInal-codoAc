@@ -1,4 +1,3 @@
-
 package config;
 
 import java.sql.Connection;
@@ -7,54 +6,58 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class Conexion 
-{
+public class Conexion {
+ public String driver="com.mysql.jdbc.Driver";
     
-    public String driver="com.mysql.jdbc.Driver";
     
     public Connection getConnection()
     {
         Connection conexion=null;
         
-        try 
+        try
         {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName(driver);
             conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/crud22548","root","");
-        } 
-        catch (ClassNotFoundException|SQLException e) 
+  
+        }
+        catch(ClassNotFoundException|SQLException e)
         {
             System.out.println(e);
-        } 
+        }       
         return conexion;
     }
     
+//    este metodo main es solo para probar la base de datos y ver que funcione
+            
     public static void main(String[] args) throws SQLException 
     {
+        Connection conexion=null;
+        Conexion con=new Conexion();
+        conexion=con.getConnection();
         
-        Connection conexion=null; // variable del tipo connectin
-        Conexion con=new Conexion(); //objeto que pertenece a la clase desarrollada arriba
-        conexion=con.getConnection(); //
         
-        //un preparedstatment es una consulta sql pre-compilada, permite precompilar la consulta asi me mantiene asi y las consultas se vuelven mas rapidas
-        // resultsert es un tipo de dato que guarda bloques de informacion provenientes de la consulta sql, como registros.
-        PreparedStatement prepSt;
-        ResultSet resSet;
+        PreparedStatement ps;
+        ResultSet rs;
         
-        prepSt=conexion.prepareStatement("select * from socios");
+        ps=conexion.prepareStatement("select * from socios");
         
-        resSet=prepSt.executeQuery();
-        
-        while (resSet.next()) 
-        {
-            int id=resSet.getInt("idSocio");
-            boolean estado=resSet.getBoolean("activo");
-            
-            System.out.println("ID: "+id+", Estado: "+estado+".");
+        rs=ps.executeQuery();
+
+        while (rs.next()) {
+            int id = rs.getInt("idSocio");
+            String nom = rs.getString("nombre");
+            String ape = rs.getString("apellido");
+            String dire = rs.getString("direccion");
+            String loc= rs.getString("localidad");
+            String em = rs.getString("email");
+            String tel = rs.getString("telefono");
+            boolean estado = rs.getBoolean("activo");
+
+            System.out.println("ID: "+id+", Nombre: "+nom+", Apellido: "+ape+", Direccion: "+dire+", Localidad: "+loc+", Email: "+em+", Telefono: "+tel+", Estado: "+estado);
         }
-                
+
     }
-    
+
 }
 
 /**

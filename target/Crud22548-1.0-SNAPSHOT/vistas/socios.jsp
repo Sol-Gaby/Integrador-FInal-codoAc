@@ -25,28 +25,27 @@
     </head>
 
     <body>
-        
+
         <h1 class="text-center py-4 bg-info">Listado de Socios Gym</h1>
         <div class="container text-center">
 
-            <div class="row px-4">
+            <div class="row p-auto">
 
-                <a class="btn btn-warning col-4 my-5 rounded-4" href="SociosController?accion=nuevo">Agregar Socio Nuevo</a>
-
-                <div class="table-responsive mt-2">
+                <div class="table-responsive mt-0 rounded-4">
                     <table class="table table-primary">
                         <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
                         <thead>
                             <!--                            <tr>-->
-                            <th>Id</th> <!-- encabezado de ID SOCIO -->
-                            <th>Nombre</th> <!-- encabezado de NOMBRE SOCIO -->
-                            <th>Apellido</th> <!-- encabezado de APELLIDO SOCIO -->
-                            <th>Direccion</th> <!-- encabezado de DIRECCION SOCIO -->
-                            <th>Localidad</th> <!-- encabezado de LOCALIDAD SOCIO -->
-                            <th>Email</th> <!-- encabezado de EMAIL SOCIO -->
-                            <th>Telefono</th> <!-- encabezado de TELEFONO SOCIO -->
-                            <th>Eliminar</th> <!-- encabezado de BOTON ELIMINAR SOCIO -->
-                            <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->        
+                        <th>Id</th> <!-- encabezado de ID SOCIO -->
+                        <th>Nombre</th> <!-- encabezado de NOMBRE SOCIO -->
+                        <th>Apellido</th> <!-- encabezado de APELLIDO SOCIO -->
+                        <th>Localidad</th> <!-- encabezado de LOCALIDAD SOCIO -->
+                        <th>Direccion</th> <!-- encabezado de DIRECCION SOCIO -->
+                        <th>Fecha de Nacimiento</th> <!-- encabezado de Fecha de Nacimiento -->
+                        <th>Email</th> <!-- encabezado de EMAIL SOCIO -->
+                        <th>Telefono</th> <!-- encabezado de TELEFONO SOCIO -->
+                        <th>Eliminar</th> <!-- encabezado de BOTON ELIMINAR SOCIO -->
+                        <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->        
                         <!--                            </tr>-->
                         </thead>
 
@@ -54,15 +53,14 @@
                         <!-- en la variable resultado guardo toda la info de la lista de socios -->
 
                         <%
-                            List<Socios> resultado = null;
-                            SociosDAO soc = new SociosDAO();
-                            resultado = soc.listaSocios();
+                            List<Socios> resultado=null;
+                            SociosDAO s1=new SociosDAO();
+                            resultado=s1.listaSocios();
 
-                            for (int i=0;i<resultado.size();i++)
+                            for (int i=0;i<resultado.size();i++) 
                             {
-
-                                String rutaMod="SociosController?accion=modificar&id="+resultado.get(i).getIdSocio();
-                                String rutaElim="SociosController?accion=eliminar&id="+resultado.get(i).getIdSocio();
+                                String rutaMod="SociosController?accion=modificar&idSocios="+resultado.get(i).getIdSocio();
+                                String rutaElim="SociosController?accion=eliminar&idSocios="+resultado.get(i).getIdSocio();
                         %> 
 
                         <!-- --------- FINAL DE CODIGO JAVASCRIP ---------  -->
@@ -78,19 +76,17 @@
                             <td><%=resultado.get(i).getFechaNac()%></td>
                             <td><%=resultado.get(i).getEmail()%></td>
                             <td><%=resultado.get(i).getTelefono()%></td>
-                            <!-- BOTONES -->
-                            <td class="text-center"><button type="button" class="btn- btn-warning"> <a href=<%=rutaMod%>><i class="fa-solid fa-xmark"></i></a></button></td>
-                            <td class="text-center"><button type="button" class="btn- btn-warning"><a href=<%=rutaElim%>><i class="fa-solid fa-pen"></i></a></button></td>
+                            <td class="text-center"><a href=<%=rutaElim%>> <i class="fa-solid fa-xmark"></i> </a></td>
+                            <td class="text-center"><a href=<%=rutaMod%>> <i class="fa-solid fa-pen"></i> </a></td>
                         </tr>
-
                         <%
                             }
                         %>
-
                     </table>
-                </div>
+                </div>                
             </div>
+            <a class="btn btn-warning col-4 my-2 rounded-4" href="SociosController?accion=nuevo">Agregar Socio Nuevo</a>
         </div>
     </body>
-    
+
 </html>

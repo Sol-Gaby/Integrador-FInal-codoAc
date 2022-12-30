@@ -20,7 +20,7 @@
     </head>
     <body>
 
-        <h1 class="text-center p-4">Nuevo Socio</h1>
+        <h1 class="text-center py-4 bg-info">Nuevo Socio</h1>
 
         <div class="container text-center">           
             <div class="row pd-4">
@@ -83,18 +83,18 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="row">
-                        <div class="col mb-6 pt-5">
-                            <button type="submit" class="btn btn-warning" >Cargar Socio</button>
+                        <div class="col mb-2 pt-2">
+                            <a href="SociosController?accion=nuevo"><button type="submit" class="btn btn-warning" >Cargar Socio</button></a>
                         </div>
 
                     </div>
-
-
                 </form>
-
-
+            </div>
+            
+            <div class="col mb-2 pt-2">
+                <a href="SociosController?"><button type="" class="btn btn-primary">Volver</button></a>
             </div>
 
         </div>

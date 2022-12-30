@@ -19,7 +19,8 @@ public class SociosDAO
 
     public SociosDAO() throws ClassNotFoundException
     {
-        Conexion conect=new Conexion();
+        Conexion conect;
+        conect = new Conexion();
         conexion=conect.getConnection();
     }
 
@@ -38,7 +39,7 @@ public class SociosDAO
         // siempre que querramos invocar un comando que ejecute una accion sobre una base de datos, necesitamos un try cach
         try 
         {
-            prepSt=conexion.prepareStatement("SELECT * FROM `socios`");
+            prepSt=conexion.prepareStatement("select * from socios");
             resultS=prepSt.executeQuery(); // aca ponemos la variable que almacena todo lo de la consulta anterior
 
             while (resultS.next()) 
@@ -79,7 +80,7 @@ public class SociosDAO
         // siempre que querramos invocar un comando que ejecute una accion sobre una base de datos, necesitamos un try cach
         try 
         {
-            prepSt=conexion.prepareStatement("SELECT * FROM `socios` where idSocio=?"); //el preparedSt(consulta precompilada), nos permite que al momento de la ejecucion se reemplase el signo de pregunta por un dato (que le tenemos que sumistrar)
+            prepSt=conexion.prepareStatement("select * from socios where idSocio=?"); //el preparedSt(consulta precompilada), nos permite que al momento de la ejecucion se reemplase el signo de pregunta por un dato (que le tenemos que sumistrar)
             prepSt.setInt(1, _id); // necesita dos parametros, la ubicacion y el dato en si (el argumento que trae el metodo y eso es lo que va a reemplazar en el signo de pregunta anterior)
             resultS = prepSt.executeQuery(); // aca ponemos la variable que almacena todo lo de la consulta anterior
 
@@ -142,7 +143,9 @@ public class SociosDAO
     }
 
     //----------------------------- METODO PARA ACTUALIZAR UN SOCIO -----------------------------------//
-    public boolean actualizarSocios(Socios soc) {
+    
+    public boolean actualizarSocios(Socios soc) 
+    {
 
         PreparedStatement prepSt;
 
@@ -174,7 +177,9 @@ public class SociosDAO
     }
 
     //---------------------- METODO PARA ELIMINAR LOS SOCIOS ------------------------------//
-    public boolean eliminarSocios(int _id) {
+    
+    public boolean eliminarSocios(int _id) 
+    {
         
         PreparedStatement prepSt;
 
