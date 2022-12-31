@@ -1,29 +1,20 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
-*/
-/* 
-    Created on : 16 dic 2022, 09:23:11
-    Author     : Elizabeth
-*/
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.body
+body
 {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
+    background: #82AAE3 ;    
 }
-
-
 .div
 {
     font-family: 'Roboto', sans-serif;
 }
-
-h3
+h1
 {
-    color: red;
+    color:white;
+    background: #3A4F7A;
+}
+input
+{
+    color:white;
 }

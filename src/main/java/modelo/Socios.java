@@ -73,6 +73,14 @@ public class Socios
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+    
+        public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
+    }
 
     public String getEmail() {
         return email;
@@ -97,15 +105,7 @@ public class Socios
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-
-    public LocalDate getFechaNac() {
-        return fechaNac;
-    }
-
-    public void setFechaNac(LocalDate fechaNac) {
-        this.fechaNac = fechaNac;
-    }
-      
+     
 }
 /**
  *

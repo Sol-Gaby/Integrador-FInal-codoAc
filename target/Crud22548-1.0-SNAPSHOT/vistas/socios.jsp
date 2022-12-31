@@ -22,11 +22,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- script para fontawersome -->
         <script src="https://kit.fontawesome.com/d3abc30a8e.js" crossorigin="anonymous"></script>
+        <link href="vistas/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
 
-        <h1 class="text-center py-4 bg-info">Listado de Socios Gym</h1>
+        <h1 class="text-center py-4">Listado de Socios Gym</h1>
         <div class="container text-center">
 
             <div class="row p-auto">
@@ -53,14 +54,14 @@
                         <!-- en la variable resultado guardo toda la info de la lista de socios -->
 
                         <%
-                            List<Socios> resultado=null;
-                            SociosDAO s1=new SociosDAO();
-                            resultado=s1.listaSocios();
+                            List<Socios> resultado = null;
+                            SociosDAO soc = new SociosDAO();
+                            resultado = soc.listaSocios();
 
                             for (int i=0;i<resultado.size();i++) 
                             {
-                                String rutaMod="SociosController?accion=modificar&idSocios="+resultado.get(i).getIdSocio();
-                                String rutaElim="SociosController?accion=eliminar&idSocios="+resultado.get(i).getIdSocio();
+                                String rutaMod="SociosController?accion=modificar&id="+resultado.get(i).getIdSocio();
+                                String rutaElim="SociosController?accion=eliminar&id="+resultado.get(i).getIdSocio();
                         %> 
 
                         <!-- --------- FINAL DE CODIGO JAVASCRIP ---------  -->

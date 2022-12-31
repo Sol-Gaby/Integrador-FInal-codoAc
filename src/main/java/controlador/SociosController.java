@@ -51,7 +51,7 @@ public class SociosController extends HttpServlet
             }
             else if (accion.equals("actualizar"))
             {
-                int id=Integer.parseInt(request.getParameter("idSocio"));
+                int id = Integer.parseInt(request.getParameter("idSocio"));
                 String nombre=request.getParameter("nombre");
                 String apellido=request.getParameter("apellido");
                 String direccion=request.getParameter("direccion");
@@ -59,16 +59,15 @@ public class SociosController extends HttpServlet
                 LocalDate fechaNac=LocalDate.parse(request.getParameter("fechaNac"));
                 String email=request.getParameter("email");
                 String telefono=request.getParameter("telefono");
-                boolean activo=Boolean.parseBoolean(request.getParameter("activo"));
             
-                Socios soc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, activo);
-                sociosDAO.actualizarSocios(soc);
+                 Socios soc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                 sociosDAO.ActualizarSocios(soc);
                 dispatcher=request.getRequestDispatcher("vistas/socios.jsp");
             }
             else if (accion.equals("eliminar"))
             {
-                int id=Integer.parseInt(request.getParameter("idSocio"));
-                sociosDAO.eliminarSocios(id);
+                int id = Integer.parseInt(request.getParameter("id"));
+                sociosDAO.EliminarSocios(id);
                 dispatcher=request.getRequestDispatcher("vistas/socios.jsp");           
             }
             else if (accion.equals("nuevo"))

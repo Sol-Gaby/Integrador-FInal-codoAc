@@ -54,7 +54,7 @@ public class SociosDAO
                 String email=resultS.getString("email");
                 boolean activo=resultS.getBoolean("activo");
 
-                Socios nuevoSoc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, activo);
+                Socios nuevoSoc=new Socios(id,nombre,apellido,direccion,localidad,fechaNac,email,telefono,activo);
                 listaSoc.add(nuevoSoc);
             }
 
@@ -144,9 +144,8 @@ public class SociosDAO
 
     //----------------------------- METODO PARA ACTUALIZAR UN SOCIO -----------------------------------//
     
-    public boolean actualizarSocios(Socios soc) 
+    public boolean ActualizarSocios(Socios soc) 
     {
-
         PreparedStatement prepSt;
 
         try 
@@ -159,8 +158,9 @@ public class SociosDAO
             prepSt.setObject(5, soc.getFechaNac());
             prepSt.setString(6, soc.getEmail());
             prepSt.setString(7, soc.getTelefono());
-            prepSt.setBoolean(8, soc.isActivo());
             prepSt.setInt(9, soc.getIdSocio());
+            prepSt.setBoolean(8, true);
+            
             prepSt.execute();
 
             return true;
@@ -178,15 +178,14 @@ public class SociosDAO
 
     //---------------------- METODO PARA ELIMINAR LOS SOCIOS ------------------------------//
     
-    public boolean eliminarSocios(int _id) 
-    {
-        
+    public boolean EliminarSocios(int id) 
+    {        
         PreparedStatement prepSt;
 
         try 
         {            
             prepSt=conexion.prepareStatement("delete from socios where idSocio=?");
-            prepSt.setInt(1,_id);
+            prepSt.setInt(1,id);
             prepSt.execute();            
 
             return true;
