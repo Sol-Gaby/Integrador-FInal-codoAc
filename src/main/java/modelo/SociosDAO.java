@@ -54,7 +54,7 @@ public class SociosDAO
                 String email=resultS.getString("email");
                 boolean activo=resultS.getBoolean("activo");
 
-                Socios nuevoSoc=new Socios(id,nombre,apellido,direccion,localidad,fechaNac,email,telefono,activo);
+                Socios nuevoSoc = new Socios(id,nombre,apellido,direccion,localidad,fechaNac,email,telefono,activo);
                 listaSoc.add(nuevoSoc);
             }
 
@@ -126,7 +126,7 @@ public class SociosDAO
             prepSt.setString(4, nuevoSoc.getLocalidad());
             prepSt.setObject(5, nuevoSoc.getFechaNac());
             prepSt.setString(6, nuevoSoc.getEmail());
-            prepSt.setString(7, nuevoSoc.getTelefono());
+            prepSt.setString(7, nuevoSoc.getTelefono());            
             prepSt.setBoolean(8, true);
             
             prepSt.execute();
@@ -159,7 +159,7 @@ public class SociosDAO
             prepSt.setString(6, soc.getEmail());
             prepSt.setString(7, soc.getTelefono());
             prepSt.setInt(9, soc.getIdSocio());
-            prepSt.setBoolean(8, true);
+            prepSt.setBoolean(8, soc.isActivo());
             
             prepSt.execute();
 

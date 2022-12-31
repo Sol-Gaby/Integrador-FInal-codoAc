@@ -59,14 +59,15 @@ public class SociosController extends HttpServlet
                 LocalDate fechaNac=LocalDate.parse(request.getParameter("fechaNac"));
                 String email=request.getParameter("email");
                 String telefono=request.getParameter("telefono");
+                boolean activo=Boolean.getBoolean("activo");
             
-                 Socios soc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                 Socios soc=new Socios(id, nombre, apellido, direccion, localidad, fechaNac, email, telefono, activo);
                  sociosDAO.ActualizarSocios(soc);
                 dispatcher=request.getRequestDispatcher("vistas/socios.jsp");
             }
             else if (accion.equals("eliminar"))
             {
-                int id = Integer.parseInt(request.getParameter("id"));
+                int id = Integer.parseInt(request.getParameter("idSocio"));
                 sociosDAO.EliminarSocios(id);
                 dispatcher=request.getRequestDispatcher("vistas/socios.jsp");           
             }
@@ -83,8 +84,9 @@ public class SociosController extends HttpServlet
                 LocalDate fechaNac=LocalDate.parse(request.getParameter("fechaNac"));
                 String email=request.getParameter("email");
                 String telefono=request.getParameter("telefono");
+                boolean activo=Boolean.getBoolean("activo");
             
-                Socios soc=new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, true);
+                Socios soc=new Socios(0, nombre, apellido, direccion, localidad, fechaNac, email, telefono, activo);
                 //el 0 es un numero aleatorio que le damos ya que al id no se lo insertamos nosotros, eso solo paera rellenar
                 sociosDAO.insertSocios(soc);
                 dispatcher=request.getRequestDispatcher("vistas/socios.jsp");

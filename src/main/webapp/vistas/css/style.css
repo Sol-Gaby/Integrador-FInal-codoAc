@@ -1,20 +1,30 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,600&family=Merriweather+Sans:wght@400;800&display=swap');
 
 body
 {
-    background: #82AAE3 ;    
-}
-.div
-{
-    font-family: 'Roboto', sans-serif;
+    background: #82AAE3 ;
 }
 h1
 {
     color:white;
     background: #3A4F7A;
+    font-family: 'Arimo', sans-serif;
+    margin: auto;
 }
-input
+h2
 {
     color:white;
+    background: #3A4F7A;
+    font-family: 'Arimo', sans-serif;
+}
+
+table thead td a i
+{
+    color: red;
+}
+.table-responsive
+{
+    border-radius: 1rem;
 }

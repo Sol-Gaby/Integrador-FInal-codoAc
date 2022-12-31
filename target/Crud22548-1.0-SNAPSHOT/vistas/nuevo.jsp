@@ -17,11 +17,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- script para fontawersome -->
         <script src="https://kit.fontawesome.com/d3abc30a8e.js" crossorigin="anonymous"></script>
+        <!-- goolge fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,600&family=Merriweather+Sans:wght@400;800&display=swap" rel="stylesheet">
         <link href="vistas/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 
-        <h1 class="text-center py-4">Nuevo Socio</h1>
+        <h1 class="text-center py-4">Agregar un Nuevo Socio</h1>
 
         <div class="container text-center">           
             <div class="row pd-4">
@@ -92,7 +96,7 @@
                     </div>
                 </form>
             </div>
-            
+
             <div class="col mb-2 pt-2">
                 <a href="SociosController?"><button type="" class="btn btn-primary">Volver</button></a>
             </div>

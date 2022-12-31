@@ -22,11 +22,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- script para fontawersome -->
         <script src="https://kit.fontawesome.com/d3abc30a8e.js" crossorigin="anonymous"></script>
+        <!-- goolge fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,600&family=Merriweather+Sans:wght@400;800&display=swap" rel="stylesheet">
         <link href="vistas/css/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 
-        <h1 class="text-center py-4">Modificar Socio</h1>
+        <h1 class="text-center py-4">Modificar un Socio Existente</h1>
 
         <div class="container text-center">           
             <div class="row pd-4">
@@ -47,19 +51,19 @@
                         <!-- ---------------------- FILA 1 ---------------------- -->
 
                         <!-- label para id -->                        
-                        <div class="col mb-3">
-                            <label for="idSocio"class="form-label">Id</label>
-                            <!--                            class="form-label fw-bold" del label -->
+                        <div class="col-1 mb-3">
+                            <label for="idSocio"class="form-label fw-bold">Id</label>
+<!--                            class="form-label " del label -->
                             <input type="text" class="form-control" del imput  redonly="true" name="idSocio" value="<%=resultado.getIdSocio()%>">                        
                         </div>                        
                         <!-- label para nombre -->                        
-                        <div class="col mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
+                        <div class="col-5 mb-3">
+                            <label for="nombre" class="form-label fw-bold">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre" required placeholder="Ingrese nombre del socio" value="<%=resultado.getNombre()%>">                        
                         </div>
                         <!-- label para apelllio -->
-                        <div class="col mb-3">
-                            <label for="apellido" class="form-label">Apellido</label>
+                        <div class="col-6 mb-3">
+                            <label for="apellido" class="form-label fw-bold">Apellido</label>
                             <input type="text" class="form-control" name="apellido" id="apellido" required placeholder="Ingrese apellido del socio" value="<%=resultado.getApellido()%>">                        
                         </div>
                     </div>
@@ -69,12 +73,12 @@
                     <div class="row g-3">                        
                         <!-- label para direccion -->
                         <div class="col mb-3">
-                            <label for="direccion" class="form-label">Direccion</label>
+                            <label for="direccion" class="form-label fw-bold">Direccion</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" required placeholder="Ingrese una direccion" value="<%=resultado.getDireccion()%>">                        
                         </div>
                         <!-- label localidad -->
                         <div class="col mb-3">
-                            <label for="localidad" class="form-label">Localidad</label>
+                            <label for="localidad" class="form-label fw-bold">Localidad</label>
                             <input type="text" class="form-control" name="localidad" id="localidad" required placeholder="Ingrese una localidad" value="<%=resultado.getLocalidad()%>">                        
                         </div>
                     </div>
@@ -84,12 +88,12 @@
                     <div class="row g-3">
                         <!-- label para fecha de nacimiento -->
                         <div class="col mb-3">
-                            <label for="fechaNac" class="form-label" >Fecha Nacimiento</label>
+                            <label for="fechaNac" class="form-label fw-bold" >Fecha Nacimiento</label>
                             <input type="date" class="form-control" id="fechaNac" name="fechaNac" value="<%=resultado.getFechaNac()%>">                          
                         </div> 
 
                         <div class="col mb-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label fw-bold">Email</label>
                             <input type="text" class="form-control" name="email" id="email" required value="<%=resultado.getEmail()%>">                        
                         </div>
                     </div>
@@ -99,35 +103,31 @@
                     <div class="row g-3">
                         <!-- telefono -->
                         <div class="col mb-3">
-                            <label for="telefono" class="form-label">Telefono</label>
+                            <label for="telefono" class="form-label fw-bold">Telefono</label>
                             <input type="text" class="form-control" name="telefono" id="telefono" required value="<%=resultado.getTelefono()%>">                        
                         </div>
                         <!-- lebel activo -->                   
                         <div class="col mb-3">
-                            <label for="activo" class="form-label"> Activo</label>
-                            <select id="inputState" class="form-select">
+                            <label for="activo" class="form-label fw-bold"> Activo</label>
+                            <select required value="<%=resultado.getTelefono()%> id="inputState" class="form-select">
                                 <option selected>Seleccionar</option>
                                 <option>activo</option>
                                 <option>baja</option>
                             </select>
                         </div>
-
-                        <!-- ---------------------- BOTON DE MODIFICAR ---------------------- -->
-
-                        <div class="row">
-                            <div class="col mb-2 pt-2">
-                                <a href="SociosController?accion=modificar"><button type="submit" class="btn btn-warning">Modificar</button></a>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-2 pt-2">
+                            <a href="SociosController?accion=modificar"><button type="submit" class="btn btn-warning">Modificar</button></a>
                         </div>
                     </div>
                 </form>
-
             </div>
-                        
+
             <div class="col mb-2 pt-2">
                 <a href="SociosController?"><button type="" class="btn btn-primary">Volver</button></a>
             </div>
-                        
+
         </div>
     </body>
 </html>

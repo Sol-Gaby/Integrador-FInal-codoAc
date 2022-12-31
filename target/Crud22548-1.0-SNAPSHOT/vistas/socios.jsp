@@ -22,21 +22,25 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
         <!-- script para fontawersome -->
         <script src="https://kit.fontawesome.com/d3abc30a8e.js" crossorigin="anonymous"></script>
+        <!-- goolge fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@1,600&family=Merriweather+Sans:wght@400;800&display=swap" rel="stylesheet">
         <link href="vistas/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
 
-        <h1 class="text-center py-4">Listado de Socios Gym</h1>
+        <h1 class="text-center py-4 mb-4">Listado de Socios</h1>
         <div class="container text-center">
 
-            <div class="row p-auto">
+            <div class="row">
 
-                <div class="table-responsive mt-0 rounded-4">
+                <div class="table-responsive rounded-4">
                     <table class="table table-primary">
+                        
                         <!-- --------- ENCABEZADOS DE LA TABLA ---------  -->
                         <thead>
-                            <!--                            <tr>-->
                         <th>Id</th> <!-- encabezado de ID SOCIO -->
                         <th>Nombre</th> <!-- encabezado de NOMBRE SOCIO -->
                         <th>Apellido</th> <!-- encabezado de APELLIDO SOCIO -->
@@ -45,9 +49,9 @@
                         <th>Fecha de Nacimiento</th> <!-- encabezado de Fecha de Nacimiento -->
                         <th>Email</th> <!-- encabezado de EMAIL SOCIO -->
                         <th>Telefono</th> <!-- encabezado de TELEFONO SOCIO -->
+                        <th>Estado</th> <!-- encabezado de Estado del SOCIO -->
                         <th>Eliminar</th> <!-- encabezado de BOTON ELIMINAR SOCIO -->
-                        <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->        
-                        <!--                            </tr>-->
+                        <th>Modificar</th> <!-- encabezado de BOTON MODIFICAR SOCIO -->  
                         </thead>
 
                         <!-- --------- COMIENZO CODIGO DE JAVASCRIP ---------  -->
@@ -58,18 +62,16 @@
                             SociosDAO soc = new SociosDAO();
                             resultado = soc.listaSocios();
 
-                            for (int i=0;i<resultado.size();i++) 
-                            {
-                                String rutaMod="SociosController?accion=modificar&id="+resultado.get(i).getIdSocio();
-                                String rutaElim="SociosController?accion=eliminar&id="+resultado.get(i).getIdSocio();
+                            for (int i = 0; i < resultado.size(); i++) {
+                                String rutaMod = "SociosController?accion=modificar&id=" + resultado.get(i).getIdSocio();
+                                String rutaElim = "SociosController?accion=eliminar&idSocio=" + resultado.get(i).getIdSocio();
                         %> 
 
                         <!-- --------- FINAL DE CODIGO JAVASCRIP ---------  -->
 
                         <!-- --------- relleno DE LA TABLA ---------  -->
                         <tr>
-                            <!-- persona de prueba hasta conectar con la base de datos que traiga a los socios -->
-                            <td><%=resultado.get(i).getIdSocio()%></td>
+                            <td class="fw-bold"><%=resultado.get(i).getIdSocio()%></td>
                             <td><%=resultado.get(i).getNombre()%></td>
                             <td><%=resultado.get(i).getApellido()%></td>
                             <td><%=resultado.get(i).getLocalidad()%></td>
@@ -77,6 +79,7 @@
                             <td><%=resultado.get(i).getFechaNac()%></td>
                             <td><%=resultado.get(i).getEmail()%></td>
                             <td><%=resultado.get(i).getTelefono()%></td>
+                            <td> <%=resultado.get(i).isActivo()%> </td>
                             <td class="text-center"><a href=<%=rutaElim%>> <i class="fa-solid fa-xmark"></i> </a></td>
                             <td class="text-center"><a href=<%=rutaMod%>> <i class="fa-solid fa-pen"></i> </a></td>
                         </tr>
